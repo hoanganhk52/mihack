@@ -1,0 +1,30 @@
+<h1>Hay hoi 1 cau hoi</h1>
+
+<form id="questionForm">
+    <div class="form-group">
+        <label for="question">Example textarea</label>
+        <textarea class="form-control" name="question" id="questionContent" rows="10" maxlength="200"></textarea>
+    </div>
+
+    <p id="strict-letter"></p>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<script>
+    $('#questionForm').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'http://localhost:3000/api/questions',
+            type: 'POST',
+            data: {
+                question: $('#questionContent').val()
+            },
+            success: function (success) {
+              console.log(success);
+            }
+        });
+    });
+</script>

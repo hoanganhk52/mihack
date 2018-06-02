@@ -1,0 +1,22 @@
+body {
+    background: #FBFEF9;
+    color: #ccc;
+}
+
+form {
+    text-align: center;
+}
+
+.title {
+    color: #000;
+    border-bottom: 2px solid #ccc;
+}
+
+.form-element{
+    border-color: #BF1363;
+}
+
+#submit-btn {
+    background: #BF1363;
+    padding: 10px;
+}
