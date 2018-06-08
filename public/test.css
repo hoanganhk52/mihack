@@ -22,11 +22,14 @@ form {
     border: none;
 }
 
-#game-table {
-    color:
-}
-
 .summary {
     background: #BF1363;
     color: #fff;
+}
+
+#game-table input{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 5px;
+    width: 50%;
 }
