@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 const User = require('./user.js');
 
 const GameSchema = new mongoose.Schema({
-	user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+	users: [
+		{
+			userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+			userName: {type: String}
+		}
+	],
 	round: [
 		[
 			{

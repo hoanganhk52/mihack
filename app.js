@@ -19,12 +19,15 @@ app.post('/game', function (req, res) {
 	let users = [];
 
 	req.body.username.forEach((username) => {
-		users.push({username: username});
+		users.push({userName: username});
 	});
 
 	let saveGame = async function () {
 		let savedUsers = await UserModel.create(users);
-		return GameModel.create({user: savedUsers.map(user => user._id)});
+		return GameModel.create({users: savedUsers.map((item, index) => {
+			delete item.__v;
+			return item;
+		})});
 	};
 
 	saveGame().then(game => {

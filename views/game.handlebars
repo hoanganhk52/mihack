@@ -1,3 +1,34 @@
 <h1 class="title">Scorekeeper</h1>
 
 {{{game}}}
+
+<table class="table" id="game-table">
+    <thead class="thead">
+        <tr class="title">
+            <th scope="col"></th>
+            {{#each game.users}}
+                <th scope="col">{{this.userName}}</th>
+            {{/each}}
+        </tr>
+        <tr class="summary">
+            <th scope="col">Sum of Score(<span class="total-score">0</span>)</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="text-center">
+    <button type="submit" class="btn btn-primary" id="add-round">ADD ROUND</button>
+</div>
