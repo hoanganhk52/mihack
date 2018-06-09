@@ -4,54 +4,58 @@
 
 <table class="table" id="game-table">
     <thead class="thead">
-    <tr class="title">
-        <th scope="col"></th>
-        {{#each game.users}}
-            <th scope="col">{{this.userName}}</th>
-        {{/each}}
-    </tr>
-    <tr class="summary">
-        <th scope="col">Sum of Score(<span class="total-score"></span>)</th>
-        <th scope="col" class="sum">First</th>
-        <th scope="col" class="sum">Last</th>
-        <th scope="col" class="sum">Handle</th>
-        <th scope="col" class="sum">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    {{#each game.rounds}}
-        <tr>
-            <th scope="row">Round {{@key}}</th>
-            {{#each this}}
-                <td>{{score}}</td>
+        <tr class="title">
+            <th scope="col"></th>
+            {{#each game.users}}
+                <th scope="col">{{this.userName}}</th>
             {{/each}}
         </tr>
-    {{else}}
-    {{!-- when there're no round --}}
-        <tr>
-            <th scope="row">No Rounds</th>
+        <tr class="summary">
+            <th scope="col">Sum of Score(<span class="total-score"></span>)</th>
+            <th scope="col" class="sum">First</th>
+            <th scope="col" class="sum">Last</th>
+            <th scope="col" class="sum">Handle</th>
+            <th scope="col" class="sum">Handle</th>
         </tr>
-    {{/each}}
+    </thead>
+    <tbody>
+        
+        {{#each game.rounds}}
+            <tr>
+                <th scope="row">Round {{@key}}</th>
+                {{#each this}}
+                    <td>{{score}}</td>
+                {{/each}}
+            </tr>
+        {{else}}
+            {{!-- when there're no round --}}
+            <tr>
+                <th scope="row">No Rounds</th>
+            </tr>
+        {{/each}}
     </tbody>
 </table>
 
 <div class="text-center">
-    <a class="btn btn-primary" href="{{game._id}}/add-round" id="add-round">ADD ROUND</a>
+    <button type="submit" class="btn btn-primary" id="add-round">
+        <a href="{{game._id}}/add-round">ADD ROUND</a>
+    </button>
 </div>
 
 <script>
 
     let rows = $('#game-table tbody tr');
     let sums = $('.sum')
-
-    for (let i = 0; i < rows.length; i++) {
+    
+    for(let i = 0; i< rows.length; i++){
         let sumVal = 0;
-        rows.each(function () {
+        rows.each(function(){
             sumVal = sumVal + parseInt($(this).find('td').eq(i).text());
         })
         sums.eq(i).html(sumVal);
     }
 
+    
+    
 
 </script>
