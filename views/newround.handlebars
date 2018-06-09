@@ -1,0 +1,18 @@
+<h1 class="title">ADD ROUND</h1>
+
+<form action="save" method="POST" class="">
+    <div class="row">
+        {{#each game.users}}
+            <div class="col-3 form-group">
+            <span>{{this.userName}}</span>
+            <input type="number" class="form-control" name="scores[]" value="0">
+        </div>
+        {{/each}}
+        
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" id="save-round">SAVE ROUND</button>
+    </div>
+</form>
+
+

@@ -1,6 +1,6 @@
 <h1 class="title">Scorekeeper</h1>
 
-{{{game}}}
+{{!-- {{{game}}} --}}
 
 <table class="table" id="game-table">
     <thead class="thead">
@@ -11,24 +11,51 @@
             {{/each}}
         </tr>
         <tr class="summary">
-            <th scope="col">Sum of Score(<span class="total-score">0</span>)</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Sum of Score(<span class="total-score"></span>)</th>
+            <th scope="col" class="sum">First</th>
+            <th scope="col" class="sum">Last</th>
+            <th scope="col" class="sum">Handle</th>
+            <th scope="col" class="sum">Handle</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">Round 1</th>
-            <td><input type="number" value="1"></td>
-            <td><input type="number" value="1"></td>
-            <td><input type="number" value="1"></td>
-            <td><input type="number" value="1"></td>
-        </tr>
+        
+        {{#each game.rounds}}
+            <tr>
+                <th scope="row">Round {{@key}}</th>
+                {{#each this}}
+                    <td>{{score}}</td>
+                {{/each}}
+            </tr>
+        {{else}}
+            {{!-- when there're no round --}}
+            <tr>
+                <th scope="row">No Rounds</th>
+            </tr>
+        {{/each}}
     </tbody>
 </table>
 
 <div class="text-center">
-    <button type="submit" class="btn btn-primary" id="add-round">ADD ROUND</button>
+    <button type="submit" class="btn btn-primary" id="add-round">
+        <a href="{{game._id}}/add-round">ADD ROUND</a>
+    </button>
 </div>
+
+<script>
+
+    let rows = $('#game-table tbody tr');
+    let sums = $('.sum')
+    
+    for(let i = 0; i< rows.length; i++){
+        let sumVal = 0;
+        rows.each(function(){
+            sumVal = sumVal + parseInt($(this).find('td').eq(i).text());
+        })
+        sums.eq(i).html(sumVal);
+    }
+
+    
+    
+
+</script>

@@ -15,37 +15,13 @@ app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/game', function (req, res) {
-	let users = [];
-
-	req.body.username.forEach((username) => {
-		users.push({userName: username});
-	});
-
-	let saveGame = async function () {
-		let savedUsers = await UserModel.create(users);
-		return GameModel.create({users: savedUsers.map((item, index) => {
-			delete item.__v;
-			return item;
-		})});
-	};
-
-	saveGame().then(game => {
-		res.redirect(`/game/${game._id}`);
-	}).catch((e) => {
-		res.send(e);
-	});
-});
+//routers:
+const GameRouter = require('./router/gameRouter');
+app.use('/game', GameRouter);
 
 
 app.get('/', function (req, res) {
 	res.render('home');
-});
-
-app.get('/game/:id', (req, res) => {
-	GameModel.findById(req.params.id, (err, game) => {
-		res.render('game', {game})
-	});
 });
 
 app.listen(8080, function (err) {

@@ -16,7 +16,7 @@ form {
     border-color: #BF1363;
 }
 
-#submit-btn, #add-round {
+#submit-btn, #add-round, #save-round {
     background: #BF1363;
     padding: 10px 50px;
     border: none;
@@ -33,3 +33,9 @@ form {
     padding-left: 5px;
     width: 50%;
 }
+
+#add-round a{
+    color: #fff;
+    text-decoration: none;
+}
+/* NEW-ROUND */
