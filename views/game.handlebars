@@ -1,4 +1,4 @@
-<h1 class="title">Scorekeeper</h1>
+<a href="/"><h1 class="title">Scorekeeper</h1></a>
 
 {{!-- {{{game}}} --}}
 
@@ -12,50 +12,50 @@
         </tr>
         <tr class="summary">
             <th scope="col">Sum of Score(<span class="total-score"></span>)</th>
-            <th scope="col" class="sum">First</th>
-            <th scope="col" class="sum">Last</th>
-            <th scope="col" class="sum">Handle</th>
-            <th scope="col" class="sum">Handle</th>
+            <th scope="col" class="sum">0</th>
+            <th scope="col" class="sum">0</th>
+            <th scope="col" class="sum">0</th>
+            <th scope="col" class="sum">0</th>
         </tr>
     </thead>
     <tbody>
         
         {{#each game.rounds}}
+        
             <tr>
                 <th scope="row">Round {{@key}}</th>
                 {{#each this}}
                     <td>{{score}}</td>
                 {{/each}}
             </tr>
+        
         {{else}}
             {{!-- when there're no round --}}
-            <tr>
-                <th scope="row">No Rounds</th>
-            </tr>
+           
+            <h5>No scores yet. Add more round(s) to keep scores.</h5>
         {{/each}}
     </tbody>
 </table>
 
 <div class="text-center">
-    <button type="submit" class="btn btn-primary" id="add-round">
-        <a href="{{game._id}}/add-round">ADD ROUND</a>
-    </button>
+    <a class="btn btn-primary" href="{{game._id}}/add-round" id="add-round">ADD ROUND</a>
 </div>
 
 <script>
 
     let rows = $('#game-table tbody tr');
-    let sums = $('.sum')
-    
-    for(let i = 0; i< rows.length; i++){
-        let sumVal = 0;
-        rows.each(function(){
-            sumVal = sumVal + parseInt($(this).find('td').eq(i).text());
-        })
-        sums.eq(i).html(sumVal);
+    let sums = $('.sum');
+    let sumVal = 0;
+  
+    if(rows.length > 0){
+        for(let i = 0; i< 4; i++){
+            sumVal = 0;
+                rows.each(function(){
+                    sumVal = sumVal + parseInt($(this).find('td').eq(i).text());
+                });
+            sums.eq(i).html(sumVal);
+        }
     }
-
+        
     
-    
-
 </script>

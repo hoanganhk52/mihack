@@ -7,6 +7,10 @@ form {
     text-align: center;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 .title {
     color: #000;
     border-bottom: 2px solid #ccc;
