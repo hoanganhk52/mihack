@@ -1,6 +1,6 @@
 <h1 class="title">ADD ROUND</h1>
 
-<form action="save" method="POST" class="">
+<form action="/game/{{game._id}}/save" method="POST" class="">
     <div class="row">
         {{#each game.users}}
             <div class="col-3 form-group">

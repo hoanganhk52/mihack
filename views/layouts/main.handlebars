@@ -21,6 +21,16 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script src="/js/test.js"></script>
+    <script src="/js/game.js"></script>
+    <script>
+        $.ajaxSetup({
+            beforeSend: function (xhr)
+            {
+                xhr.setRequestHeader("Accept","application/vvv.website+json;version=1");
+                xhr.setRequestHeader("Authorization","Token token=\"FuHCLyY46\"");
+            }
+        });
+    </script>
 
     <title>Mini hack</title>
 </head>

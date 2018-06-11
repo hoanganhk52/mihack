@@ -14,6 +14,9 @@ const GameSchema = new Schema({
 			{
 				userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 				score: {type: Number, default: 0}
+			},
+			{
+				_id : false
 			}
 		]
 	]

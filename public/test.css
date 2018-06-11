@@ -42,4 +42,8 @@ a:hover{
     color: #fff;
     text-decoration: none;
 }
+
+.wrong-score {
+    border: 1px solid red !important;
+}
 /* NEW-ROUND */
